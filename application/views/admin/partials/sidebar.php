@@ -3,7 +3,7 @@
         <!--begin::Sidebar Brand-->
         <div class="sidebar-brand">
           <!--begin::Brand Link-->
-          <a href="./index.html" class="brand-link">
+          <a href="<?=base_url("admin/service_admin");?>" class="brand-link">
             <!--begin::Brand Image-->
             <img
               src="/dubaipureclean/admin_dist/assets/img/AdminLTELogo.png"
@@ -31,7 +31,7 @@
               id="navigation"
             >
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Services Category
@@ -44,12 +44,33 @@
                     $service_category = $this->Service_model->getServiceCategory();
                     foreach($service_category as $cat){?>
                       <li class="nav-item">
-                        <a href="<?=base_url("admin/service_admin/services/$cat->id");?>" class="nav-link active">
+                        <a href="<?=base_url("admin/service_admin/services/$cat->id");?>" class="nav-link <?=($this->uri->segment(4)==$cat->id)?'active':'';?>">
                           <i class="nav-icon bi bi-circle"></i>
                           <p><?=$cat->name;?></p>
                         </a>
                       </li>
                     <?php } ?>
+                </ul>
+              </li>
+
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-palette"></i>
+                  <p>
+                    Service Management
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+
+                      <li class="nav-item">
+                        <a href="<?=base_url("admin/service_admin/");?>" class="nav-link">
+                          <i class="nav-icon bi bi-plus"></i>
+                          <p>Add New Service</p>
+                        </a>
+                      </li>
+
                 </ul>
               </li>
 
