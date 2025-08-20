@@ -65,7 +65,7 @@
                 <ul class="nav nav-treeview">
 
                       <li class="nav-item">
-                        <a href="<?=base_url("admin/service_admin/");?>" class="nav-link">
+                        <a href="<?=base_url("admin/service_admin/add");?>" class="nav-link">
                           <i class="nav-icon bi bi-plus"></i>
                           <p>Add New Service</p>
                         </a>
