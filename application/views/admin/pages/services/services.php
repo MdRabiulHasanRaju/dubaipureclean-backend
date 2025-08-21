@@ -39,8 +39,13 @@
                             <td><?=$i;?></td>
                             <td><?=$service->title;?></td>
                             <td>
-                                <a href="" class="btn btn-success btn-sm">Edit</a>
-                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="<?=base_url("admin/service_admin/edit/$service->id")?>" class="btn btn-success btn-sm">Edit</a>
+
+                                <a href="<?= base_url('admin/service_admin/delete/'.$service->id) ?>" 
+                                onclick="return confirm('Are you sure you want to delete this service?')" 
+                                class="btn btn-danger btn-sm">
+                                Delete
+                              </a>
                             </td>
                             </tr>
                             <?php $i++; } ?>

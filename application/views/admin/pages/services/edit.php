@@ -6,28 +6,20 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs5.min.css" rel="stylesheet">
 
 <style>
-  div#msg {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    z-index: 9999;
-  }
-  img.preview-img{
-    max-height: 150px;
-    margin-top: 10px;
-  }
+div#msg { position: fixed; right: 0; bottom: 0; z-index: 9999; }
+.img-preview { max-width: 150px; display: block; margin-top: 10px; }
 </style>
 
 <main class="app-main">
   <div class="app-content-header">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-6"><h3 class="mb-0">Add New Service</h3></div>
+        <div class="col-sm-6"><h3 class="mb-0">Edit Service</h3></div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-end">
             <li class="breadcrumb-item"><a href="<?=base_url("admin");?>">Home</a></li>
             <li class="breadcrumb-item">Service Management</li>
-            <li class="breadcrumb-item active">Add</li>
+            <li class="breadcrumb-item active">Edit</li>
           </ol>
         </div>
       </div>
@@ -49,7 +41,7 @@
                   <select class="form-select" id="cat_id" name="cat_id" required>
                     <option value="">-- Select Category --</option>
                     <?php foreach($categories as $cat): ?>
-                      <option value="<?= $cat->id ?>"><?= $cat->name ?></option>
+                      <option value="<?= $cat->id ?>" <?= $cat->id==$service->category_id?'selected':'' ?>><?= $cat->name ?></option>
                     <?php endforeach; ?>
                   </select>
                 </div>
@@ -57,81 +49,85 @@
                 <!-- Title -->
                 <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title" required minlength="3">
+                  <input type="text" class="form-control" id="title" name="title" value="<?= $service->title ?>" required minlength="3">
                 </div>
 
                 <!-- Sub Title -->
                 <div class="mb-3">
                   <label for="sub_title" class="form-label">Sub Title</label>
-                  <input type="text" class="form-control" id="sub_title" name="sub_title">
+                  <input type="text" class="form-control" id="sub_title" name="sub_title" value="<?= $service->sub_title ?>">
                 </div>
 
                 <!-- Featured Image -->
                 <div class="mb-3">
                   <label for="featured_image_file" class="form-label">Featured Image</label>
                   <input type="file" class="form-control" id="featured_image_file" name="featured_image_file" accept="image/*">
-                  <img id="featured_image_preview" class="preview-img" style="display:none;">
+                  <?php if(!empty($service->featured_image)): ?>
+                    <img id="featured_image_preview" src="<?= base_url("uploads/services/$service->featured_image") ?>" class="img-preview" alt="Featured Image">
+                  <?php endif; ?>
                 </div>
 
                 <!-- Banner Image -->
                 <div class="mb-3">
                   <label for="banner_image_file" class="form-label">Banner Image</label>
                   <input type="file" class="form-control" id="banner_image_file" name="banner_image_file" accept="image/*">
-                  <img id="banner_image_preview" class="preview-img" style="display:none;">
+                  <?php if(!empty($service->banner_image)): ?>
+                    <img id="banner_image_preview" src="<?= base_url("uploads/services/$service->banner_image") ?>" class="img-preview" alt="Banner Image">
+                  <?php endif; ?>
                 </div>
 
                 <!-- Banner Video -->
                 <div class="mb-3">
                   <label for="banner_video" class="form-label">Banner Video (URL)</label>
-                  <input type="text" class="form-control" id="banner_video" name="banner_video">
+                  <input type="text" class="form-control" id="banner_video" name="banner_video" value="<?= $service->banner_video ?>">
                 </div>
 
                 <!-- Description -->
                 <div class="mb-3">
                   <label for="description" class="form-label">Description</label>
-                  <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                  <textarea class="form-control" id="description" name="description"><?= $service->description ?></textarea>
                 </div>
 
                 <!-- Home Page -->
                 <div class="mb-3">
                   <label for="home_page" class="form-label">Show on Home Page?</label>
                   <select class="form-select" id="home_page" name="home_page" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
+                    <option value="0" <?= $service->home_page==0?'selected':'' ?>>No</option>
+                    <option value="1" <?= $service->home_page==1?'selected':'' ?>>Yes</option>
                   </select>
                 </div>
 
                 <!-- Position -->
                 <div class="mb-3">
                   <label for="position" class="form-label">Position</label>
-                  <input type="number" class="form-control" id="position" name="position">
+                  <input type="number" class="form-control" id="position" name="position" value="<?= $service->position ?>">
                 </div>
 
                 <!-- Meta Description -->
                 <div class="mb-3">
                   <label for="meta_description" class="form-label">Meta Description</label>
-                  <textarea class="form-control" id="meta_description" name="meta_description"></textarea>
+                  <textarea class="form-control" id="meta_description" name="meta_description"><?= $service->meta_description ?></textarea>
                 </div>
 
                 <!-- Meta Keyword -->
                 <div class="mb-3">
                   <label for="meta_keyword" class="form-label">Meta Keyword</label>
-                  <input type="text" class="form-control" id="meta_keyword" name="meta_keyword">
+                  <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" value="<?= $service->meta_keyword ?>">
                 </div>
 
                 <!-- Meta Title -->
                 <div class="mb-3">
                   <label for="meta_title" class="form-label">Meta Title</label>
-                  <input type="text" class="form-control" id="meta_title" name="meta_title">
+                  <input type="text" class="form-control" id="meta_title" name="meta_title" value="<?= $service->meta_title ?>">
                 </div>
 
                 <!-- Created By -->
                 <div class="mb-3">
                   <label for="created_by" class="form-label">Created By (User ID)</label>
-                  <input type="number" class="form-control" id="created_by" name="created_by" required>
+                  <input type="number" class="form-control" id="created_by" name="created_by" value="<?= $service->created_by ?>" required>
                 </div>
 
-                <button type="submit" class="btn btn-success w-100">Save Service</button>
+                <button type="submit" class="btn btn-primary w-100">Update Service</button>
               </form>
             </div>
           </div>
@@ -154,24 +150,12 @@
 <script>
 $(document).ready(function(){
 
-  // Init Summernote
+  // Summernote
   $('#description').summernote({
     height: 300,
-    placeholder: 'Write description here...',
-    toolbar: [
-      ['style', ['style']],
-      ['font', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-      ['fontname', ['fontname']],
-      ['fontsize', ['fontsize']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph', 'height']],
-      ['table', ['table']],
-      ['insert', ['link', 'picture', 'video', 'hr']],
-      ['view', ['fullscreen', 'codeview', 'help']]
-    ],
     callbacks: {
       onImageUpload: function(files) {
-        for(let i=0; i < files.length; i++){
+        for(let i = 0; i < files.length; i++){
           uploadSummernoteImage(files[i]);
         }
       },
@@ -181,10 +165,11 @@ $(document).ready(function(){
     }
   });
 
-  // Image upload handler
+  $('#description').summernote('code', `<?= addslashes($service->description) ?>`);
+
   function uploadSummernoteImage(file){
     let data = new FormData();
-    data.append("file", file);
+    data.append('file', file);
     $.ajax({
       url: "<?= base_url('admin/service_admin/summernote_image'); ?>",
       type: "POST",
@@ -193,26 +178,22 @@ $(document).ready(function(){
       processData: false,
       dataType: "json",
       success: function(res){
-        if(res.url){
-          $('#description').summernote('insertImage', res.url);
-        } else { alert('Image upload failed!'); }
-      },
-      error: function(){ alert('Something went wrong during upload.'); }
+        if(res.url) $('#description').summernote('insertImage', res.url);
+        else alert('Image upload failed!');
+      }
     });
   }
 
-  // Delete Summernote image
   function deleteSummernoteImage(src){
     $.ajax({
       url: "<?= base_url('admin/service_admin/summernote_image_delete'); ?>",
       type: "POST",
       data: {src: src},
-      success: function(res){ console.log(res); },
-      error: function(){ console.log("Failed to delete image: "+src); }
+      success: function(res){ console.log(res); }
     });
   }
 
-  // Preview Featured Image
+    // Preview Featured Image
   $('#featured_image_file').change(function(e){
     let reader = new FileReader();
     reader.onload = function(e){
@@ -230,39 +211,31 @@ $(document).ready(function(){
     reader.readAsDataURL(this.files[0]);
   });
 
-  // AJAX form submit with file upload
+  // Form submit
   $("#serviceForm").on("submit", function(e){
     e.preventDefault();
-
+    let descriptionHtml = $('#description').summernote('code');
     let formData = new FormData(this);
-    formData.set('description', $('#description').summernote('code'));
+    formData.set('description', descriptionHtml);
 
     $.ajax({
-      url: "<?= base_url('admin/service_admin/add') ?>",
+      url: "<?= base_url('admin/service_admin/update/'.$service->id) ?>",
       type: "POST",
       data: formData,
-      contentType: false,
       processData: false,
+      contentType: false,
       dataType: "json",
       success: function(res){
-        if(res.status == 400){
+        if(res.status==400){
           $("#msg").html('<div class="alert alert-danger">'+res.msg+'</div>');
         } else {
-          $("#msg").html('<div class="alert alert-success">Service Added Successfully!</div>');
-          $("#serviceForm")[0].reset();
-          $('#description').summernote('reset');
-          $('#featured_image_preview, #banner_image_preview').hide();
+          $("#msg").html('<div class="alert alert-success">'+res.msg+'</div>');
         }
-
-        setTimeout(function(){
-          $("#msg").fadeOut("slow", function(){ $(this).html("").show(); });
-        }, 3000);
+        setTimeout(function(){ $("#msg").fadeOut("slow"); },3000);
       },
       error: function(){
         $("#msg").html('<div class="alert alert-danger">Something went wrong!</div>');
-        setTimeout(function(){
-          $("#msg").fadeOut("slow", function(){ $(this).html("").show(); });
-        }, 3000);
+        setTimeout(function(){ $("#msg").fadeOut("slow"); },3000);
       }
     });
   });
