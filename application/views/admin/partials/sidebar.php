@@ -6,7 +6,7 @@
           <a href="<?=base_url("admin/service_admin");?>" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src="/dubaipureclean/admin_dist/assets/img/AdminLTELogo.png"
+              src="<?=base_url("admin_dist/assets/img/AdminLTELogo.png");?>"
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
             />

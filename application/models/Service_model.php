@@ -59,7 +59,10 @@
                 return $this->db->get_where('services', ['id' => $id])->row();
             }
 
-            public function getServiceCategory(){
+            public function getServiceCategory($filters=[]){
+                if(!empty($filters['id'])){
+                    $this->db->where('id',$filters['id']);
+                }
                 return $this->db->get("service_category")->result();
             }
 

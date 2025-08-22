@@ -29,7 +29,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="/dubaipureclean/admin_dist/assets/img/user2-160x160.jpg"
+                  src="<?=base_url("admin_dist/assets/img/user2-160x160.jpg");?>"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
