@@ -52,6 +52,12 @@
                 if(!empty($filters['category_id'])){
                     $this->db->where('category_id',$filters['category_id']);
                 }
+                if(!empty($filters['link'])){
+                    $this->db->where('link',$filters['link']);
+                }
+                if(!empty($filters['home_page'])){
+                    $this->db->where('home_page',$filters['home_page']);
+                }
                 return $this->db->get("services")->result();
             }
 
