@@ -7,7 +7,7 @@
         <strong>
           Copyright &copy; <?=date('Y')?>&nbsp;
         </strong>
-        All rights reserved.
+        All rights reserved. | Developed By <a target="_blank" href="https://linkedin.com/in/mdrabiulhasanraju">Md Rabiul Hasan</a>
         <!--end::Copyright-->
       </footer>
       <!--end::Footer-->

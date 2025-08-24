@@ -6,13 +6,13 @@
           <a href="<?=base_url("admin/service_admin");?>" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src="<?=base_url("admin_dist/assets/img/AdminLTELogo.png");?>"
+              src="<?=base_url("admin_dist/assets/img/logo.png");?>"
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">DP Admin Software</span>
+            <span class="brand-text fw-light">JCD Admin Software</span>
             <!--end::Brand Text-->
           </a>
           <!--end::Brand Link-->

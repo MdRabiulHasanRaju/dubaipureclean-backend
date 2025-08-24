@@ -29,7 +29,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="<?=base_url("admin_dist/assets/img/user2-160x160.jpg");?>"
+                  src="<?=base_url("admin_dist/assets/img/logo.png");?>"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -39,7 +39,7 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="/dubaipureclean/admin_dist/assets/img/user2-160x160.jpg"
+                    src="<?=base_url("admin_dist/assets/img/logo.png");?>"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
@@ -52,7 +52,7 @@
 
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
-                  <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                  <a href="<?= site_url('admin/auth_admin/logout') ?>" class="btn btn-default btn-flat float-end">Sign out</a>
                 </li>
                 <!--end::Menu Footer-->
               </ul>
