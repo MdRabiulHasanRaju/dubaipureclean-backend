@@ -72,6 +72,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css" />
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs5.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="<?=base_url("admin_dist/assets/img/logo.png");?>" type="image/x-icon">
   
   </head>
   <!--end::Head-->

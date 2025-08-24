@@ -46,7 +46,7 @@ class Service_admin extends CI_Controller{
         $cat_id = $this->input->post('cat_id');
         $title = $this->input->post('title');
         $sub_title = $this->input->post('sub_title');
-        $description = $this->input->post('description');
+        $description = $this->input->post('description',false);
         $home_page = $this->input->post('home_page');
         $position = $this->input->post('position');
         $meta_description = $this->input->post('meta_description');
@@ -262,7 +262,7 @@ public function update($id)
         'featured_image'   => $featured_image,
         'banner_image'     => $banner_image,
         'banner_video'     => $this->input->post('banner_video') ?: $service->banner_video,
-        'description'      => $this->input->post('description', TRUE) ?: $service->description,
+        'description'      => $this->input->post('description', false) ?: $service->description,
         'home_page'        => $this->input->post('home_page') !== null ? $this->input->post('home_page') : $service->home_page,
         'position'         => $this->input->post('position') ?: $service->position,
         'meta_description' => $this->input->post('meta_description') ?: $service->meta_description,

@@ -54,6 +54,7 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="<?=base_url("admin_dist/css/adminlte.css");?>" />
     <!--end::Required Plugin(AdminLTE)-->
+    <link rel="shortcut icon" href="<?=base_url("admin_dist/assets/img/logo.png");?>" type="image/x-icon">
   </head>
   <!--end::Head-->
   <!--begin::Body-->
