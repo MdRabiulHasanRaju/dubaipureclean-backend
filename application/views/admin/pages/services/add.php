@@ -125,11 +125,6 @@
                   <input type="text" class="form-control" id="meta_title" name="meta_title">
                 </div>
 
-                <!-- Created By -->
-                <div class="mb-3">
-                  <label for="created_by" class="form-label">Created By (User ID)</label>
-                  <input type="number" class="form-control" id="created_by" name="created_by" required>
-                </div>
 
                 <button type="submit" class="btn btn-success w-100">Save Service</button>
               </form>

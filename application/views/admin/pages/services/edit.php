@@ -121,11 +121,6 @@ div#msg { position: fixed; right: 0; bottom: 0; z-index: 9999; }
                   <input type="text" class="form-control" id="meta_title" name="meta_title" value="<?= $service->meta_title ?>">
                 </div>
 
-                <!-- Created By -->
-                <div class="mb-3">
-                  <label for="created_by" class="form-label">Created By (User ID)</label>
-                  <input type="number" class="form-control" id="created_by" name="created_by" value="<?= $service->created_by ?>" required>
-                </div>
 
                 <button type="submit" class="btn btn-primary w-100">Update Service</button>
               </form>

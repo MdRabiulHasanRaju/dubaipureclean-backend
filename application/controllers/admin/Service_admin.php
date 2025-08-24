@@ -36,7 +36,7 @@ class Service_admin extends CI_Controller{
         $this->form_validation->set_rules('meta_description', 'Meta Description', 'trim');
         $this->form_validation->set_rules('meta_keyword', 'Meta Keyword', 'trim');
         $this->form_validation->set_rules('meta_title', 'Meta Title', 'trim');
-        $this->form_validation->set_rules('created_by', 'Created By', 'required|integer');
+        // $this->form_validation->set_rules('created_by', 'Created By', 'required|integer');
 
         if ($this->form_validation->run() == FALSE) {
             echo json_encode(["status" => 400, "msg" => "Form Validation Error!"]);
@@ -52,7 +52,7 @@ class Service_admin extends CI_Controller{
         $meta_description = $this->input->post('meta_description');
         $meta_keyword = $this->input->post('meta_keyword');
         $meta_title = $this->input->post('meta_title');
-        $created_by = $this->input->post('created_by');
+        $created_by = $this->session->userdata('user_id');
         $banner_video = $this->input->post('banner_video');
 
         // ===== Handle Featured Image Upload =====
@@ -94,7 +94,7 @@ class Service_admin extends CI_Controller{
         }
 
         // ===== Create service link =====
-        $link = createServiceLink($title) ?: 'error';
+        $link = strtolower(createServiceLink($title)) ?: 'error';
 
         $data = [
             'category_id' => $cat_id,
@@ -268,7 +268,6 @@ public function update($id)
         'meta_description' => $this->input->post('meta_description') ?: $service->meta_description,
         'meta_keyword'     => $this->input->post('meta_keyword') ?: $service->meta_keyword,
         'meta_title'       => $this->input->post('meta_title') ?: $service->meta_title,
-        'created_by'       => $this->input->post('created_by') ?: $service->created_by,
     ];
 
     $this->Service_model->update($id, $update_data);
